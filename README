@@ -10,3 +10,17 @@ Learn SimpleOS step by step
 
 2) read the README and follow the instructions
 
+
+Tree of Directory
+-----------------
+.
+├── LICENSE
+├── README			# this file
+└── tutorials
+    ├── lesson00
+    │   └── README		# Step by step how-to
+    └── lesson01
+        ├── gos.lds		# LinkScript for linker
+        ├── gos.S		# Main program
+        └── README		# Step by step how-to
+
