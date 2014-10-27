@@ -20,7 +20,7 @@ Tree of Directory
     ├── lesson00
     │   └── README		# Step by step how-to
     └── lesson01
-        ├── gos.lds		# LinkScript for linker
-        ├── gos.S		# Main program
+        ├── simpleos.lds	# LinkScript for linker
+        ├── simpleos.S		# Main program
         └── README		# Step by step how-to
 

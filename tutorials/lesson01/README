@@ -1,4 +1,4 @@
-# simple.S source code has only 4 lines as follow.
+# simpleos.S source code has only 4 lines as follow.
 
     main:
 	mov	r0, #0x0	/* set register r0 = 0x0 */
@@ -9,20 +9,20 @@
 # to tell linker how to link object code to ELF file.
 
 
-# Build simple.S
+# Build simpleos.S
 
-    $ arm-none-eabi-as -mcpu=arm926ej-s -o simple.o simple.S
+    $ arm-none-eabi-as -mcpu=arm926ej-s -o simpleos.o simpleos.S
 
 # Link it to ELF format
 
-    $ arm-none-eabi-ld -T simple.lds -o simple.elf simple.o
+    $ arm-none-eabi-ld -T simpleos.lds -o simpleos.elf simpleos.o
 
 # how to debug
-1) In console "A", execute qemu in GDB mode with our simple.elf
+1) In console "A", execute qemu in GDB mode with our simpleos.elf
 
     # option "-S -s" will force qemu wait for gdb connect to itself.
     # gdb default uses port 1234
-    $ ./qemu-system-arm -M versatilepb -nographic -kernel simple.elf -S -s
+    $ ./qemu-system-arm -M versatilepb -nographic -kernel simpleos.elf -S -s
 
     # ctrl+a z to exit from qemu
 
@@ -32,7 +32,7 @@
     $ arm-none-eabi-gdb
 
     # after gdb launched. in gdb console.
-    (gdb) file simple.elf		# load symbol
+    (gdb) file simpleos.elf		# load symbol
     (gdb) target remote localhost:1234	# connect to qemu
     (gdb) layout asm			# show asm code window and point
 					# out where code pc point to.
