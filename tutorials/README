@@ -1,0 +1,27 @@
+Introduction
+------------
+
+[Basic Practice for Skill and Concept]
+lession00 - Environment Setup
+lession01 - First Bare Metal Program.
+            . 4-lines only assembly
+            . linkscript sample
+            . how to use gdb
+lession02 - How to Call a C function in Assembly
+            . Why need to setup a stack point (sp)?
+            . How C function pass arguments?
+            . Tool, "objdump"
+lession03 - Read Processor ID and Cache Status
+            . How to read/write co-processor register?
+lession04 - Implement a simple interface for output
+            char to serial console
+            . How to know where is console port?
+lession05 - Integrate GNU C library, "newlib" into project.
+            . How to implement simple system calls for newlib
+            . Implement a simple memory pool for C library.
+
+[Advanced Topics]
+lession05 - Setup "Exception Vector"
+            . How to inject an "undefined instruction"
+              exception?
+lession06 - Implement multitask interface and a scheduler
