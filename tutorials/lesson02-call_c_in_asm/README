@@ -1,5 +1,11 @@
 Example code for calling C function in assembly.
 
+1) Add a main.c for C function implementation.
+2) Setup stack point in simpleos.S. Because C compiler uses sp register
+   as stack while calling function.
+3) Assing memory addres behind object code with offset 1024 bytes. See
+   simpleos.lds
+
 # Build code
 
     # simpleos.S
@@ -19,7 +25,7 @@ Example code for calling C function in assembly.
     # gdb default uses port 1234
     $ ./qemu-system-arm -M versatilepb -nographic -kernel simpleos.elf -S -s
 
-    # ctrl+a z to exit from qemu
+    # ctrl+a x to exit from qemu
 
 2) In console "B", execute gdb to connect to QEMU. (like HW ICE)
 
