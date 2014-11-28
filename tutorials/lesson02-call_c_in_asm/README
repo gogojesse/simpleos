@@ -1,0 +1,44 @@
+Example code for calling C function in assembly.
+
+1) Add a main.c for C function implementation.
+2) Setup stack point in simpleos.S. Because C compiler uses sp register
+   as stack while calling function.
+3) Assing memory addres behind object code with offset 1024 bytes. See
+   simpleos.lds
+
+# Build code
+
+    # simpleos.S
+    $ arm-none-eabi-as -mcpu=arm926ej-s -g -o simpleos.o simpleos.S
+
+    # main.c
+    $ arm-nono-eabi-gcc -mcpu=arm926ej-s -g -c main.c
+
+# Link it to ELF format
+
+    $ arm-none-eabi-ld -T simpleos.lds -o simpleos.elf simpleos.o main.o
+
+# how to debug
+1) In console "A", execute qemu in GDB mode with our simpleos.elf
+
+    # option "-S -s" will force qemu wait for gdb connect to itself.
+    # gdb default uses port 1234
+    $ ./qemu-system-arm -M versatilepb -nographic -kernel simpleos.elf -S -s
+
+    # ctrl+a x to exit from qemu
+
+2) In console "B", execute gdb to connect to QEMU. (like HW ICE)
+
+    # launch gdb
+    $ arm-none-eabi-gdb
+
+    # after gdb launched. in gdb console.
+    (gdb) file simpleos.elf		# load symbol
+    (gdb) target remote localhost:1234	# connect to qemu
+    (gdb) layout asm			# show asm code window and point
+					# out where code pc point to.
+    (gdb) b main			# set break point in main & c_main
+    (gdb) b c_main
+    (gdb) c				# continue
+    (gdb) quit				# ctrl+a z to exit from qemu
+
